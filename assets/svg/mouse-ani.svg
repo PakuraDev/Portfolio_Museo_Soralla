@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 64 64">
+  <style>
+    .wheel {
+      /* 4.2s de ciclo total, con ease-out como en tu Figma */
+      animation: mouseScroll 4.2s ease-out infinite;
+    }
+
+    @keyframes mouseScroll {
+      /* 0 a 600ms (14.28%): Espera arriba */
+      0%, 14.28% { transform: translateY(0); opacity: 1; }
+      
+      /* 600 a 1400ms (33.33%): Baja 34.66px (49.333 - 14.667) */
+      /* 1400 a 2000ms (47.61%): Espera abajo */
+      33.33%, 47.61% { transform: translateY(34.666px); opacity: 1; }
+      
+      /* 2000 a 2800ms (66.66%): Se desvanece abajo */
+      66.66% { transform: translateY(34.666px); opacity: 0; }
+      
+      /* Reset invisible: Vuelve arriba sin que se vea */
+      /* 2800 a 3400ms (80.95%): Espera invisible arriba */
+      66.67%, 80.95% { transform: translateY(0); opacity: 0; }
+      
+      /* 3400 a 4200ms (100%): Aparece de nuevo arriba */
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+
+  <rect width="45.333" height="61.333" x="9.333" y="1.333" stroke="#faf7f0" stroke-width="2.667" rx="22.667"/>
+  
+  <g class="wheel">
+    <ellipse cx="32" cy="14.667" fill="#faf7f0" rx="2.667" ry="4"/>
+  </g>
+</svg>

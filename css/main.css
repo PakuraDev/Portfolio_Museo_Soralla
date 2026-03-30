@@ -1,0 +1,239 @@
+/* ==========================================
+   1. RESET & GLOBALS
+   ========================================== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: clip;
+  background-color: var(--arena-1);
+  scroll-behavior: smooth;
+}
+
+top-header, sticky-nav, hero-carousel, agenda-section, bio-section, masonry-gallery, sorolla-footer {
+  display: block;
+}
+
+sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Ocultar filtro SVG global para los botones líquidos */
+.svg-global-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  display: none;
+}
+
+/* ==========================================
+   2. TIPOGRAFÍA
+   ========================================== */
+
+/* H0 */
+.text-h0 {
+  font-family: var(--font-serif);
+  font-size: 102px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.85; /* 85% */
+  margin: 0;
+}
+
+/* H1 */
+h1, .text-h1 {
+  font-family: var(--font-serif);
+  font-size: 51px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.90; /* 90% */
+  margin: 0;
+}
+
+/* H2 */
+h2, .text-h2 {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.95; /* 95% */
+  margin: 0;
+}
+
+/* H3 */
+h3, .text-h3 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1; /* 100% */
+  margin: 0;
+}
+
+/* P (Large) */
+.text-p-large {
+  font-family: var(--font-sans);
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+/* P (Base) */
+body, p, .text-p-base {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--negro-suave);
+  margin: 0;
+}
+
+/* P (Caption) */
+small, .text-caption {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+/* Buttons Typography */
+.text-button {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.09px;
+  margin: 0;
+}
+
+/* ==========================================
+   3. UTILES INTERACTIVOS (UI KIT)
+   ========================================== */
+
+/* Texto Madre (Enlaces, Ver más, etc.) */
+.text-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center; /* Mejor alineación para iconos posibles */
+  gap: 8px;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit; /* Hereda color desde el contenedor, util en headers */
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.text-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease-out;
+}
+
+.text-link:hover::after {
+  width: 100%;
+}
+
+.text-link:active {
+  transform: scale(0.95);
+}
+
+/* Botón Madre (El Botón Líquido "Awwwards") */
+.btn-sorolla {
+  position: relative;
+  display: inline-flex;
+  padding: 8px 16px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-tap-highlight-color: transparent;
+  color: var(--arena-1); /* Color de texto blanco por defecto en el boton dorado */
+}
+
+.btn-sorolla-body {
+  position: absolute;
+  inset: 0;
+  background-color: var(--dorado); /* Puede ser cambiado via variacion o variable de css inline si es Azul-Marino */
+  border-radius: 4px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.btn-sorolla-fluid {
+  position: absolute;
+  inset: 0;
+  background-color: var(--dorado); 
+  border-radius: 4px;
+  z-index: 1;
+  opacity: 0;
+  filter: url(#subtle-liquid);
+  transition: opacity 0.3s ease, inset 0.3s ease;
+  pointer-events: none;
+}
+
+/* Para botones azules */
+.btn-azul .btn-sorolla-body,
+.btn-azul .btn-sorolla-fluid {
+  background-color: var(--azul-marino);
+}
+
+.btn-sorolla-text {
+  position: relative;
+  z-index: 3;
+  color: var(--arena-1);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.09px;
+  pointer-events: none;
+}
+
+/* Estados de Botón */
+.btn-sorolla:hover .btn-sorolla-fluid {
+  opacity: 1;
+  inset: -4px;
+}
+
+.btn-sorolla:active {
+  transform: scale(0.95);
+}
+
+/* ==========================================
+   4. COMPONENTES GENÉRICOS DE UI
+   ========================================== */
+
+/* La animación del Mouse (El Scroll) */
+.mouse-scroll-anim {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}

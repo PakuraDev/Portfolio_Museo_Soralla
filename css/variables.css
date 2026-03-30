@@ -1,0 +1,52 @@
+/* ==========================================
+   1. FONT FACES (Carga de fuentes)
+   ========================================== */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/assets/fonts/cormorant-variable.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/assets/fonts/cormorant-variable-italic.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alegreya Sans';
+  src: url('/assets/fonts/alegreya-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Alegreya Sans';
+  src: url('/assets/fonts/alegreya-medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================
+   2. DESIGN TOKENS (Variables Globales)
+   ========================================== */
+:root {
+  /* Paleta de Colores */
+  --azul-marino: #123057;
+  --dorado: #BF8E50;
+  --negro-suave: #1A1A1A;
+  --arena-1: #FAF7F0;
+  --arena-2: #F6F1E6;
+  --arena-3: #FEF5E2;
+  --arena-4: #EEDCB8;
+
+  /* Familias Tipográficas */
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Alegreya Sans", sans-serif;
+}

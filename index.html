@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museo Sorolla | La Casa de la Luz</title>
+  <meta name="description" content="Rediseño conceptual del Museo Sorolla. Un espacio donde la luz y el arte se encuentran.">
+
+  <link rel="preload" href="/assets/fonts/cormorant-variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/assets/fonts/alegreya-regular.ttf" as="font" type="font/ttf" crossorigin>
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <style>
+    /* Ocultamos el SVG de los filtros para que no ocupe espacio visual */
+    .svg-global-defs {
+      position: absolute;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <svg class="svg-global-defs" aria-hidden="true">
+    <defs>
+      <filter id="subtle-liquid" x="-100%" y="-100%" width="300%" height="300%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.03 0.1" numOctaves="1" result="noise">
+          <animate attributeName="seed" from="1" to="100" dur="12s" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <top-header></top-header>
+  
+  <sticky-nav></sticky-nav>
+  
+  <main>
+    <hero-carousel></hero-carousel>
+    <agenda-section></agenda-section>
+    <bio-section></bio-section>
+    <masonry-gallery></masonry-gallery>
+  </main>
+  
+  <sorolla-footer></sorolla-footer>
+
+  <script type="module" src="/js/main.js"></script>
+
+</body>
+</html>
